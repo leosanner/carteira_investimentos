@@ -22,19 +22,19 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @NotBlank(message = "[name] required field")
+    @NotBlank(message = "The field [name] is a required field.")
     private String name;
 
-    @NotBlank(message = "[username] required field")
-    @Pattern(regexp = " /^\\S*$/")
+    @NotBlank(message = "The field [username] is a required field.")
+    @Pattern(regexp = " /^\\S*$/", message = "The field [username] do not acept spaces between characters.")
     private String username;
     
-    @NotBlank(message = "[password] required field")
-    @Length(min = 10, max = 25)
-    @Pattern(regexp = " /^\\S*$/")
+    @NotBlank(message = "The field [password] is a required field.")
+    @Length(min = 10, max = 25, message = "The current field [password] must be between (10) and (25).")
+    @Pattern(regexp = "/^\\S*$/", message = "The field [username] do not acept spaces between characters.")
     private String password;
     
-    @Email
+    @Email(message = "Invalid email format.")
     private String email;
     
     @Min(value = 18, message = "Your age must be grater or equal to (18).")
