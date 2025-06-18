@@ -1,0 +1,6 @@
+spring.application.name=value
+spring.port=value
+spring.datasource.url=value
+spring.datasource.username=value
+spring.datasource.password=value
+spring.jpa.hibernate.ddl-auto=value
