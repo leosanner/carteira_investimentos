@@ -5,7 +5,7 @@ target/
 !**/src/test/**/target/
 
 ### Aditional Content ###
-main/resources/application.properties
+src/main/resources/application.properties
 .env
 
 ### STS ###
