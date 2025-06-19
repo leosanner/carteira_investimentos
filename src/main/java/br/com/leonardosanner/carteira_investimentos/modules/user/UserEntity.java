@@ -37,7 +37,7 @@ public class UserEntity {
     private String username;
     
     @NotBlank(message = "The field [password] is a required field.")
-    @Length(min = 10, max = 25, message = "The current field [password] must be between (10) and (25).")
+    @Length(min = 10, max = 100, message = "The current field [password] must be between (10) and (100).")
     @Pattern(regexp = "\\S+", message = "The field [username] do not acept spaces between characters.")
     private String password;
     
