@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.leonardosanner.carteira_investimentos.modules.user.UserEntity;
 import br.com.leonardosanner.carteira_investimentos.modules.user.UserRepository;
+import br.com.leonardosanner.carteira_investimentos.modules.user.dto.AuthUserDTO;
 import br.com.leonardosanner.carteira_investimentos.modules.user.dto.UserExistenceDTO;
 import br.com.leonardosanner.carteira_investimentos.modules.user.useCases.UserExistenceUseCase;
 import jakarta.validation.Valid;
@@ -23,11 +24,6 @@ public class UserController {
 
     @Autowired
     UserExistenceUseCase userExistenceUseCase;
-
-    @GetMapping("/test")
-    public String home() {
-        return "Test";
-    }
     
     @PostMapping("/create")
     public ResponseEntity<UserEntity> createUser(@Valid @RequestBody UserEntity userEntity) {
@@ -35,5 +31,11 @@ public class UserController {
         userRepository.save(userEntity);
 
         return ResponseEntity.ok().body(userEntity);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<UserEntity> searchUser(@RequestBody AuthUserDTO authUserDTO) {
+        // fazer verificação se o usuário existe e senha é compatível;
+        return null;
     }
 }
