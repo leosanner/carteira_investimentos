@@ -1,11 +1,11 @@
 package br.com.leonardosanner.carteira_investimentos.modules.user.controllers;
 
+import br.com.leonardosanner.carteira_investimentos.modules.user.UserRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import br.com.leonardosanner.carteira_investimentos.modules.user.UserEntity;
 import br.com.leonardosanner.carteira_investimentos.modules.user.UserRepository;
@@ -16,6 +16,7 @@ import br.com.leonardosanner.carteira_investimentos.modules.user.useCases.AuthUs
 import br.com.leonardosanner.carteira_investimentos.modules.user.useCases.EncondeUserPasswordUseCase;
 import br.com.leonardosanner.carteira_investimentos.modules.user.useCases.UserExistenceUseCase;
 import jakarta.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -33,6 +34,9 @@ public class UserController {
     @Autowired
     private EncondeUserPasswordUseCase encondeUserPasswordUseCase;
 
+    @Autowired
+    private UserRepositoryService userRepositoryService; // test ; apenas para produção
+
     @PostMapping("/create")
     public ResponseEntity<UserEntity> createUser(@Valid @RequestBody UserEntity userEntity) {
         userExistenceUseCase.execute(new UserExistenceDTO(userEntity.getUsername()));
@@ -43,10 +47,14 @@ public class UserController {
         return ResponseEntity.ok().body(userEntity);
     }
 
-    @PostMapping("/get-token")
+    @PostMapping("/token")
     public ResponseEntity<ResponseTokenDTO> searchUser(@RequestBody AuthUserDTO authUserDTO) {
       
         return authUserCredentialsUseCase.execute(authUserDTO);
-       
+    }
+
+    @GetMapping("/all-users")
+    public ResponseEntity<List<UserEntity>> findAllUsers(@RequestAttribute String username) {
+        return new ResponseEntity<>(userRepositoryService.getAllUsers(), HttpStatusCode.valueOf(202));
     }
 }

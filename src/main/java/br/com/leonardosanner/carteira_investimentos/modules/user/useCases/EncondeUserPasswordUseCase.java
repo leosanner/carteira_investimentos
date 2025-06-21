@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class EncondeUserPasswordUseCase {
     
     @Autowired
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     public String excecute(String password) {
         return passwordEncoder.encode(password);
