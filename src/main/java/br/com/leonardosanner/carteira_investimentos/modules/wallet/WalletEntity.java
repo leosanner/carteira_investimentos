@@ -2,6 +2,8 @@ package br.com.leonardosanner.carteira_investimentos.modules.wallet;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.AllArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import br.com.leonardosanner.carteira_investimentos.modules.user.UserEntity;
@@ -25,9 +27,10 @@ public class WalletEntity {
     @Id 
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    
+
     private String name;
-    
+
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity userEntity;
@@ -36,5 +39,5 @@ public class WalletEntity {
     private List<WalletRegisterEntity> walletRegisterEntities = new ArrayList<>();
 
     @CreationTimestamp
-    LocalDateTime createdAt;
+    private LocalDateTime createdAt;
 }

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import br.com.leonardosanner.carteira_investimentos.modules.exceptions.GenericDTO;
 import br.com.leonardosanner.carteira_investimentos.modules.exceptions.auth.PasswordIncorretException;
-import br.com.leonardosanner.carteira_investimentos.modules.exceptions.auth.UserNotFoundException;
+import br.com.leonardosanner.carteira_investimentos.modules.exceptions.search.UserNotFoundException;
 
 @ControllerAdvice
 public class AuthenticationHandler {

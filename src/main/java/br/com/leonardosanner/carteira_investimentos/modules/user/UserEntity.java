@@ -3,6 +3,7 @@ package br.com.leonardosanner.carteira_investimentos.modules.user;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.Length;
 
@@ -26,7 +27,7 @@ import java.util.List;
 public class UserEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.UUID) // verificar isso depois
     private UUID id;
 
     @NotBlank(message = "The field [name] is a required field.")
@@ -47,6 +48,7 @@ public class UserEntity {
     @Min(value = 18, message = "Your age must be grater or equal to (18).")
     private int age;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "userEntity")
     List<WalletEntity> wallets = new ArrayList<>();
 

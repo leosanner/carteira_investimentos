@@ -54,7 +54,8 @@ public class UserController {
     }
 
     @GetMapping("/all-users")
-    public ResponseEntity<List<UserEntity>> findAllUsers(@RequestAttribute String username) {
+    public ResponseEntity<List<UserEntity>> findAllUsers() {
+
         return new ResponseEntity<>(userRepositoryService.getAllUsers(), HttpStatusCode.valueOf(202));
     }
 }

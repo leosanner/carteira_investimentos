@@ -17,7 +17,7 @@ public class UserExistenceUseCase {
     UserRepository userRepository;
 
     public void execute(UserExistenceDTO userExistenceDTO) {
-        Optional<UserEntity> result = userRepository.findByUsername(userExistenceDTO.getUsername());
+        Optional<UserEntity> result = this.userRepository.findByUsername(userExistenceDTO.getUsername());
 
         if (result.isPresent()) {
             throw new UserFoundException(); 

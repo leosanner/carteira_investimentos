@@ -18,7 +18,7 @@ import br.com.leonardosanner.carteira_investimentos.modules.user.dto.ResponseTok
 import br.com.leonardosanner.carteira_investimentos.modules.user.dto.AuthUserDTO;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
-import br.com.leonardosanner.carteira_investimentos.modules.exceptions.auth.UserNotFoundException;
+import br.com.leonardosanner.carteira_investimentos.modules.exceptions.search.UserNotFoundException;
 import br.com.leonardosanner.carteira_investimentos.modules.exceptions.auth.PasswordIncorretException;
 
 @Service
